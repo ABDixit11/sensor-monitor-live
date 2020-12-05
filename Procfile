@@ -1,1 +1,1 @@
-web: gunicorn esptest .wsgi --log-file -
+web: gunicorn esptest.wsgi --log-file -
