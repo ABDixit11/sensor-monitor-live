@@ -96,6 +96,7 @@ def modifySensor(request,pk):
 		form = SensorRegForm(request.POST, instance=data)
 		if form.is_valid():
 			form.save()
+			uid =form.cleaned_data.get('UID')
 			messages.info(request, "Sensor registered with UID "+uid+" modified")
 			return redirect('esp:dashboard')
 	context = {'form':form ,'addOrupdate':"Update Device", 'heading' : "Update Device" }
