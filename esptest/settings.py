@@ -26,7 +26,7 @@ SECRET_KEY = 'i0lg_xs@1@h!f2ap3%2o3)@nir5k%9nm)!o*6*c%p0&oy!j)df'
 DEBUG = False
 
 ALLOWED_HOSTS = ['asdesptest.herokuapp.com','127.0.0.1']
-
+#ALLOWED_HOSTS = []
 
 # Application definition
 

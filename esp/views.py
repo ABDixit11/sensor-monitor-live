@@ -70,8 +70,10 @@ def registerSensor(request):
 		form = SensorRegForm(request.POST)
 		if form.is_valid():
 			form.save()
-			t,created = SensorData.objects.get_or_create(sensorId=SensorReg.objects.get(UID = form.cleaned_data.get('UID')))
+			uid =form.cleaned_data.get('UID')
+			t,created = SensorData.objects.get_or_create(sensorId=SensorReg.objects.get(UID = uid ))
 			t.save()
+			messages.info(request, "New sensor registered with UID "+uid+" created.")
 			return redirect('esp:dashboard')
 
 	context = {'form':form,'addOrupdate':"Add Device", 'heading': "New Device Registration"}
@@ -94,6 +96,7 @@ def modifySensor(request,pk):
 		form = SensorRegForm(request.POST, instance=data)
 		if form.is_valid():
 			form.save()
+			messages.info(request, "Sensor registered with UID "+uid+" modified")
 			return redirect('esp:dashboard')
 	context = {'form':form ,'addOrupdate':"Update Device", 'heading' : "Update Device" }
 	return render(request, 'DeviceRegistration.html',context)
